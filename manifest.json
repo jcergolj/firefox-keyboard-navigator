@@ -1,0 +1,53 @@
+// manifest.json
+{
+  "manifest_version": 2,
+  "name": "jcergolj Navigator",
+  "version": "2.5",
+  "description": "Advanced keyboard-driven navigation with smart hints and form automation",
+
+  "permissions": [
+    "activeTab",
+    "<all_urls>",
+    "storage"
+  ],
+
+  "browser_specific_settings": {
+    "gecko": {}
+  },
+
+  "commands": {
+    "tab-left": {
+      "suggested_key": { "default": "Ctrl+Left" },
+      "description": "Go to previous tab"
+    },
+    "tab-right": {
+      "suggested_key": { "default": "Ctrl+Right" },
+      "description": "Go to next tab"
+    },
+    "tab-first": {
+      "suggested_key": { "default": "Ctrl+Home" },
+      "description": "Go to first tab"
+    },
+    "tab-last": {
+      "suggested_key": { "default": "Ctrl+End" },
+      "description": "Go to last tab"
+    }
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["hints.css"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "browser_action": {
+    "default_title": "jcergolj Navigator"
+  }
+}
